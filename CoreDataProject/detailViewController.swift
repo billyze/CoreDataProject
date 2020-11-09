@@ -54,6 +54,7 @@ class detailViewController: UIViewController {
 
 extension detailViewController {
     private func setUp(){
-        self.view.backgroundColor = .blue
+        self.view.backgroundColor = .white
+        self.navigationItem.title = self.tuple.name
     }
 }
