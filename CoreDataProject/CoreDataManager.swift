@@ -54,11 +54,6 @@ class CoreDataManager {
         let request: NSFetchRequest<Song> = Song.fetchRequest()
         do {
             let results = try context.fetch(request)
-//In case you want to delete all entries
-//            results.forEach{
-//                context.delete($0)
-//            }
-            self.saveContext()
             return results
         } catch {
             print(error.localizedDescription)

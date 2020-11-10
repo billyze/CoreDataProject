@@ -23,6 +23,7 @@ extension NetworkManager {
             do{
                 let x = try JSONDecoder().decode(songModel.self, from: data!)
                 completion(x.feed.results)
+                
             } catch let error {
                 print(error.localizedDescription)
             }

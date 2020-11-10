@@ -17,7 +17,7 @@ struct results: Codable {
 
 struct songInfo: Codable {
     var artistName: String
-    var releaseDate: String
+    var releaseDate: String?
     var name: String
     var collectionName: String
     var artworkUrl100: String

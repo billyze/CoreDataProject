@@ -56,5 +56,7 @@ extension detailViewController {
     private func setUp(){
         self.view.backgroundColor = .white
         self.navigationItem.title = self.tuple.name
+        
+        
     }
 }

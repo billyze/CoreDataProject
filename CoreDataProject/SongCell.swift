@@ -11,6 +11,7 @@ class SongCell: UITableViewCell {
 
     
     @IBOutlet weak var SongLabel: UILabel!
+    @IBOutlet weak var AlbumImg: UIImageView!
     @IBOutlet weak var FavoriteBtn: UIButton!
     
     override func awakeFromNib() {

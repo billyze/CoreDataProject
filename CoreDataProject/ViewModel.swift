@@ -9,7 +9,7 @@ import Foundation
 
 class ViewModel {
     var coredataManager: CoreDataManager
-    var songList: [Song?]? {
+    var songList: [Song]? {
         didSet {
             self.updateHandler?()
         }
@@ -19,6 +19,7 @@ class ViewModel {
     init(coredataManager: CoreDataManager = CoreDataManager()){
         self.coredataManager = coredataManager
     }
+    
     func bind(handler: @escaping () -> ()) {
         self.updateHandler = handler
     }
@@ -31,23 +32,24 @@ extension ViewModel {
         coredataManager.saveContext()
     }
     
-    func getSongList() -> [Song] {
-        var songList:[Song]
-        songList = coredataManager.getSongList()
-        if(songList == [])
+    func getSongList(){
+        var songList1:[Song]
+        songList1 = coredataManager.getSongList()
+        if(songList1 == [])
         {
-            NetworkManager.shared.getSongList(url1: ""){ songList in
+            NetworkManager.shared.getSongList(url1: ""){ songList2 in
                 DispatchQueue.main.async {
-                    songList.forEach{
+                    songList2.forEach{
                         self.saveSong(songInformation: $0)
                     }
+                    self.songList = self.coredataManager.getSongList()
+                    self.updateHandler?()
                 }
             }
-            songList = coredataManager.getSongList()
         }
-        self.songList = songList
-        self.updateHandler?()
-        return songList
+        else{
+            self.songList = songList1
+        }
     }
     
     func setFavorite(songNumber: Int){
@@ -57,8 +59,7 @@ extension ViewModel {
         else{
             songList[songNumber].favorite.toggle()
         }
-        coredataManager.saveContext()
         self.songList = songList
-        self.updateHandler?()
+        coredataManager.saveContext()
     }
 }

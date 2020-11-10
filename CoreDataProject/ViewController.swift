@@ -12,18 +12,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     
     var viewModel = ViewModel()
-    var songList: [Song] = []
+    //var songList: [Song] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        songList = self.viewModel.getSongList()
-        self.myTableView.reloadData()
+        self.viewModel.getSongList()
+        //self.myTableView.reloadData()
         self.viewModel.bind {
             DispatchQueue.main.async {
+                //self.songList = self.viewModel.songList!
                 self.myTableView.reloadData()
             }
         }
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.getSongList()
+        //self.myTableView.reloadData()
     }
 }
 
@@ -40,10 +45,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.FavoriteBtn.setImage(img, for: .normal)
         cell.FavoriteBtn.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
         cell.FavoriteBtn.tag = indexPath.row
-        if(songList.indices.contains(indexPath.row))
+        if((self.viewModel.songList?.indices.contains(indexPath.row)) != nil)
         {
-            cell.SongLabel.text = songList[indexPath.row].name
-            if(songList[indexPath.row].favorite){
+            let url = URL(string: (self.viewModel.songList![indexPath.row].artworkUrl100!))
+            let data = try? Data(contentsOf: url!)
+            let image = UIImage(data: data!)
+            cell.AlbumImg.image = image
+            cell.SongLabel.text = self.viewModel.songList![indexPath.row].name
+            if(self.viewModel.songList![indexPath.row].favorite){
                 cell.FavoriteBtn.setImage(imgFill, for: .normal)
             }
         }
@@ -51,15 +60,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(songList != []){
-            let name = songList[indexPath.row].name
-            let image = songList[indexPath.row].artworkUrl100
-            let artistName = songList[indexPath.row].artistName
-            let albumName = songList[indexPath.row].collectionName
-            let date = songList[indexPath.row].releaseDate
-            let favorite = songList[indexPath.row].favorite
+        if(self.viewModel.songList! != []){
+            let name = self.viewModel.songList![indexPath.row].name
+            let image = self.viewModel.songList![indexPath.row].artworkUrl100
+            let artistName = self.viewModel.songList![indexPath.row].artistName
+            let albumName = self.viewModel.songList![indexPath.row].collectionName
+            let date = self.viewModel.songList![indexPath.row].releaseDate
+            let favorite = self.viewModel.songList![indexPath.row].favorite
             let index = indexPath.row
-            let vc = detailViewController(details: (name:name!, image:image!, artistName:artistName!, albumName:albumName!, date:date!, favorite:favorite, index:index))
+            let vc = myDetailViewController(details: (name:name!, image:image!, artistName:artistName!, albumName:albumName!, date:date ?? "Unknown Release Date", favorite:favorite, index:index), viewModel:self.viewModel)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -21,7 +21,8 @@
 		3A19EB4525565BA300885C0E /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19EB4425565BA300885C0E /* SongCell.swift */; };
 		3A19EB4A2557270100885C0E /* songModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19EB492557270100885C0E /* songModel.swift */; };
 		3A19EB5925575DFE00885C0E /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A19EB5725575DFE00885C0E /* CoreDataProject.xcdatamodeld */; };
-		3A19EB5E2558487C00885C0E /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19EB5D2558487C00885C0E /* detailViewController.swift */; };
+		3A19EB64255A0AA900885C0E /* myDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19EB62255A0AA900885C0E /* myDetailViewController.swift */; };
+		3A19EB65255A0AA900885C0E /* myDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A19EB63255A0AA900885C0E /* myDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,8 @@
 		3A19EB4425565BA300885C0E /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		3A19EB492557270100885C0E /* songModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = songModel.swift; sourceTree = "<group>"; };
 		3A19EB5825575DFE00885C0E /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
-		3A19EB5D2558487C00885C0E /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		3A19EB62255A0AA900885C0E /* myDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myDetailViewController.swift; sourceTree = "<group>"; };
+		3A19EB63255A0AA900885C0E /* myDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +128,8 @@
 				3A19EB3F25565A3100885C0E /* ViewModel.swift */,
 				3A19EB4425565BA300885C0E /* SongCell.swift */,
 				3A19EB492557270100885C0E /* songModel.swift */,
-				3A19EB5D2558487C00885C0E /* detailViewController.swift */,
+				3A19EB62255A0AA900885C0E /* myDetailViewController.swift */,
+				3A19EB63255A0AA900885C0E /* myDetailViewController.xib */,
 			);
 			path = CoreDataProject;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				3A19EB0F255659FB00885C0E /* LaunchScreen.storyboard in Resources */,
 				3A19EB0C255659FB00885C0E /* Assets.xcassets in Resources */,
 				3A19EB07255659F700885C0E /* Main.storyboard in Resources */,
+				3A19EB65255A0AA900885C0E /* myDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A19EB64255A0AA900885C0E /* myDetailViewController.swift in Sources */,
 				3A19EB4A2557270100885C0E /* songModel.swift in Sources */,
 				3A19EB4525565BA300885C0E /* SongCell.swift in Sources */,
 				3A19EB5925575DFE00885C0E /* CoreDataProject.xcdatamodeld in Sources */,
-				3A19EB5E2558487C00885C0E /* detailViewController.swift in Sources */,
 				3A19EB3B25565A2800885C0E /* NetworkManager.swift in Sources */,
 				3A19EB04255659F700885C0E /* ViewController.swift in Sources */,
 				3A19EB00255659F700885C0E /* AppDelegate.swift in Sources */,
